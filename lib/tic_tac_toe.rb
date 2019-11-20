@@ -43,6 +43,23 @@ def position_taken?(board, index)
   !(board[index].nil? || board[index] == " ")
 end
 
+def current_player(board)
+  if turn_count(board)% 2 == 0
+    current_player = "X"
+  else
+    current_player = "O"
+end
+return current_player
+end
+
+
+#MAKE MOVE ON BOARD
+def move(board, index, token)
+  board[index] = token
+  play(board)
+  
+end
+
 # Define your WIN_COMBINATIONS constant
 WIN_COMBINATIONS = [
   
@@ -54,6 +71,7 @@ WIN_COMBINATIONS = [
   [0, 3, 6], #left column
   [1, 4, 7], #middle column
   [2, 5, 8]  #right column
+
 ]
 
 def won?(board)
